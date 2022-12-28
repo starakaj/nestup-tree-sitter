@@ -1,0 +1,201 @@
+==================
+Single Container
+==================
+
+[]
+
+---
+
+(nestup
+    (container))
+
+==================
+Single-line Comments
+==================
+
+// Comment
+[]
+
+---
+
+(nestup
+    (comment)
+    (container))
+
+==================
+Multi-line Comments
+==================
+
+/*
+ This is a comment
+ */
+[]
+
+---
+
+(nestup
+    (comment)
+    (container))
+
+==================
+Tied Container
+==================
+
+[] _ []
+
+---
+
+(nestup
+    (container)
+    (tie)
+    (container))
+
+==================
+Multiple Tied Container
+==================
+
+[] _ [] _ []
+
+---
+
+(nestup
+    (container)
+    (tie)
+    (container)
+    (tie)
+    (container))
+
+==================
+Sized Container
+==================
+
+[5]
+
+---
+
+(nestup
+    (container
+        (dimension
+            proportion: (integer))))
+
+==================
+Subdivided Container
+==================
+
+[5] {16}
+
+---
+
+(nestup
+    (container
+        (dimension
+            proportion: (integer))
+        (subdivisions
+            divisions: (integer))))
+
+==================
+Subdivided With Flat Ranges
+==================
+
+[5] {16 1 4:7}
+
+---
+
+(nestup
+    (container
+        (dimension
+            proportion: (integer))
+        (subdivisions
+            divisions: (integer)
+            (range (span start: (integer)))
+            (range (span start: (integer) end: (integer))))))
+
+==================
+Subdivided With Ranged Subcontainers
+==================
+
+[5] {16 1 {4}}
+
+---
+
+(nestup
+    (container
+        (dimension
+            proportion: (integer))
+        (subdivisions
+            divisions: (integer)
+            (range
+                (span start: (integer))
+                (subdivisions
+                    divisions: (integer))))))
+
+
+
+==================
+Sized Container With Rest
+==================
+
+['5]
+
+---
+
+(nestup
+    (container
+        (rest)
+        (dimension
+            proportion: (integer))))
+
+==================
+Container With Scale Only
+==================
+
+[, 1/2]
+
+---
+
+(nestup
+    (container
+        (dimension
+            scale: (ratio
+                numerator: (integer)
+                denominator: (integer)))))
+
+==================
+Container With Scale And Proportion
+==================
+
+[5, 1/2]
+
+---
+
+(nestup
+    (container
+        (dimension
+            proportion: (integer)
+            scale: (ratio
+                numerator: (integer)
+                denominator: (integer)))))
+
+==================
+Container With Scale And Proportion And Subcontainers
+==================
+
+[5, 1/2 [5] [3] {6}]
+
+---
+
+(nestup
+    (container
+        (dimension
+            proportion: (integer)
+            scale: (ratio
+                numerator: (integer)
+                denominator: (integer)))
+        (container
+            (dimension
+                proportion: (integer)))
+        (container
+            (dimension
+                proportion: (integer))
+            (subdivisions
+                divisions: (integer)))))
